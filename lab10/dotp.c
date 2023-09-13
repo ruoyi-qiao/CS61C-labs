@@ -27,7 +27,7 @@ int main() {
 			result = dotp_manual_optimized(x, y, ARRAY_SIZE);
 		}
 		run_time = omp_get_wtime() - start_time;
-
+        printf("serial_result: %f result: %f\n", serial_result, result);
 		// verify result is correct (within some threshold)
 		if (fabs(serial_result - result) > 0.001) {
 			printf("Manual optimized does not match reference.\n");

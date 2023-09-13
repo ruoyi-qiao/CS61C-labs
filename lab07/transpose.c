@@ -1,5 +1,6 @@
 #include "transpose.h"
-
+#include <stdio.h>
+int min(int a, int b) {return  a < b ? a : b;}
 /* The naive transpose function as a reference. */
 void transpose_naive(int n, int blocksize, int *dst, int *src) {
     for (int x = 0; x < n; x++) {
@@ -13,4 +14,10 @@ void transpose_naive(int n, int blocksize, int *dst, int *src) {
  * multiple of the block size. */
 void transpose_blocking(int n, int blocksize, int *dst, int *src) {
     // YOUR CODE HERE
+    for (int i = 0; i < n; i += blocksize)
+        for (int j = 0; j < n; j+= blocksize)
+            for (int x = 0; i + x < min(n, i + blocksize); x++)
+                for (int y = 0; j + y < min(n, j + blocksize); y++) {
+                    dst[(i + x)*n + j + y] = src[(j + y)*n + i + x];
+                }
 }
