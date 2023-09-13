@@ -1,7 +1,7 @@
 .globl factorial
 
 .data
-n: .word 8
+n: .word 10
 
 .text
 main:
@@ -22,3 +22,20 @@ main:
 
 factorial:
     # YOUR CODE HERE
+    # if a0 == 0 return 1;
+    # else return a0 * fac (a0-1)
+    beq a0, x0, fin
+    addi sp, sp, -8
+    sw ra, 4(sp) 
+    sw a0, 0(sp)
+    addi a0, a0, -1
+    jal ra, factorial
+    lw ra, 4(sp) 
+    lw s0, 0(sp)
+    addi sp, sp, 8
+    mul a0, a0, s0
+    jr ra
+    
+fin: 
+    addi a0, x0, 1
+    jr ra

@@ -1,6 +1,6 @@
 CC=gcc
 LD=gcc
-CFLAGS=-ggdb -Wall -pedantic -std=gnu99 -O3
+CFLAGS=-ggdb -Wall -pedantic -O3
 LDFLAGS=
 
 EX2_PROG=matrixMultiply
