@@ -30,6 +30,7 @@ void benchmark(int *A, int *B, int n, int blocksize,
     for( i = 0; i < n; i++ ) {
         for( j = 0; j < n; j++ ) {
             if( B[j+i*n] != A[i+j*n] ) {
+                printf("mismatch on element (%d,%d) A:%d B:%d.\n", i, j, A[i+j*n], B[j+i*n]);
                 printf("Error!!!! Transpose does not result in correct answer!!\n");
                 exit( -1 );
             }
